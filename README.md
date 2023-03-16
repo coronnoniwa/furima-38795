@@ -9,7 +9,7 @@
 | first_name         | string     | null: false               |
 | how_last_name      | string     | null: false               |
 | how_first_name     | string     | null: false               |
-| birthday           | datetime   | null: false               |
+| birthday           | date       | null: false               |
 
 ### Association
 
@@ -25,7 +25,7 @@
 | condition_id           | integer    | null: false                    |
 | delivery_charge_id     | integer    | null: false                    |
 | prefecture_id          | integer    | null: false,                   |
-| days_id                | integer    | null: false,                   |
+| time_id                | integer    | null: false,                   |
 | price                  | integer    | null: false,                   |
 | category_id            | integer    | null: false,                   |
 | user                   | references | null: false, foreign_key: true |
@@ -52,7 +52,7 @@
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| post_code           | integer    | null: false,                   |
+| post_code           | string     | null: false,                   |
 | prefecture_id       | string     | null: false                    |
 | delivery_city       | string     | null: false,                   |
 | delivery_address    | string     | null: false,                   |
