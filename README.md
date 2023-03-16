@@ -9,33 +9,33 @@
 | first_name         | string     | null: false               |
 | how_last_name      | string     | null: false               |
 | how_first_name     | string     | null: false               |
-| birthday           | integer    | null: false               |
+| birthday           | datetime   | null: false               |
 
 ### Association
 
 - has_many :items
-- has_many :oders
+- has_many :orders
 
 ## itemsテーブル
 
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| item_name           | string     | null: false                    |
-| explanation         | text       | null: false                    |
-| condition           | string     | null: false                    |
-| delivery_charge     | string     | null: false                    |
-| shipping_prefecture | string     | null: false,                   |
-| days                | string     | null: false,                   |
-| price               | integer    | null: false,                   |
-| category            | integer    | null: false,                   |
-| user                | references | null: false, foreign_key: true |
+| Column                 | Type       | Options                        |
+| ---------------------- | ---------- | ------------------------------ |
+| item_name              | string     | null: false                    |
+| explanation            | text       | null: false                    |
+| condition_id           | integer    | null: false                    |
+| delivery_charge_id     | integer    | null: false                    |
+| prefecture_id          | integer    | null: false,                   |
+| days_id                | integer    | null: false,                   |
+| price                  | integer    | null: false,                   |
+| category_id            | integer    | null: false,                   |
+| user                   | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :oder
+- has_one :order
 
-## odersテーブル
+## ordersテーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -53,13 +53,13 @@
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | post_code           | integer    | null: false,                   |
-| delivery_prefecture | string     | null: false                    |
+| prefecture_id       | string     | null: false                    |
 | delivery_city       | string     | null: false,                   |
-| delivery_address    | text       | null: false,                   |
-| delivery_building   | string     | null: false,                   |
-| telephone_number    | integer    | null: false,                   |
-| oder             | references | null: false, foreign_key: true |
+| delivery_address    | string     | null: false,                   |
+| delivery_building   | string     |                                |
+| telephone_number    | string     | null: false,                   |
+| order               | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :oder
+- belongs_to :order
