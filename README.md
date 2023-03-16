@@ -25,7 +25,7 @@
 | condition_id           | integer    | null: false                    |
 | delivery_charge_id     | integer    | null: false                    |
 | prefecture_id          | integer    | null: false,                   |
-| time_id                | integer    | null: false,                   |
+| shipping_day_id        | integer    | null: false,                   |
 | price                  | integer    | null: false,                   |
 | category_id            | integer    | null: false,                   |
 | user                   | references | null: false, foreign_key: true |
@@ -53,7 +53,7 @@
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | post_code           | string     | null: false,                   |
-| prefecture_id       | string     | null: false                    |
+| prefecture_id       | integer    | null: false                    |
 | delivery_city       | string     | null: false,                   |
 | delivery_address    | string     | null: false,                   |
 | delivery_building   | string     |                                |
