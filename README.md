@@ -1,15 +1,15 @@
 ## usersテーブル
 
-| Column             | Type       | Options                   |
-| ------------------ | ---------- | ------------------------- |
-| email              | string     | null: false, unique: true |
-| encrypted_password | string     | null: false               |
-| nickname           | string     | null: false               |
-| last_name          | string     | null: false               |
-| first_name         | string     | null: false               |
-| how_last_name      | string     | null: false               |
-| how_first_name     | string     | null: false               |
-| birthday           | date       | null: false               |
+| Column             | Type       | Options                                            |
+| ------------------ | ---------- | -------------------------------------------------- |
+| email              | string     | null: false, unique: true                          |
+| encrypted_password | string     | null: false,/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i |
+| nickname           | string     | null: false                                        |
+| last_name          | string     | null: false                                        |
+| first_name         | string     | null: false                                        |
+| how_last_name      | string     | null: false                                        |
+| how_first_name     | string     | null: false                                        |
+| birthday           | date       | null: false                                        |
 
 ### Association
 
