@@ -17,6 +17,6 @@ class User < ApplicationRecord
   JAPANESE_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
   validates_format_of :first_name, :last_name, with: JAPANESE_REGEX, message: 'は漢字・ひらがな・カタカナで設定してください'
 
-  KATAKANA_REGEX = /\A[ァ-ヶ一]+\z/
+  KATAKANA_REGEX = /\A[ァ-ヶー－]+\z/
   validates_format_of :how_first_name, :how_last_name, with: KATAKANA_REGEX, message: 'はカタカナで設定してください'
 end
