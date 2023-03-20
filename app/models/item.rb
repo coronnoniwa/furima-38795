@@ -21,6 +21,5 @@ class Item < ApplicationRecord
                       presence: { message: "can't be blank"}
   end
   validates :category_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :user, presence: true
   validates :image, presence: true
 end
