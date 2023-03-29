@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: :index
+  before_action :set_item, only: [:index, :create]
+
   def index
     @order_address = OrderAddress.new
-    @item = Item.find(params[:item_id])
 
     return unless current_user.id == @item.user_id or @item.order.present?
 
@@ -10,7 +11,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
@@ -36,6 +36,10 @@ class OrdersController < ApplicationController
       card: order_params[:token], # カードトークン
       currency: 'jpy' # 通貨の種類（日本円）
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   # def address_params

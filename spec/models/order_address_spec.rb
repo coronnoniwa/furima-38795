@@ -44,10 +44,40 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Delivery address can't be blank")
       end
-      it ' 電話番号は、10桁以上11桁以内の半角数値のみ保存可能なこと。' do
+      it ' 電話番号が必須であること。' do
+        @order_address.telephone_number = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Telephone number can't be blank")
+      end
+      it ' 電話番号は、9桁以下では登録できないこと。' do
+        @order_address.telephone_number = '090123412'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Telephone number は10桁以上11桁以内の半角数値のみ入力してください。')
+      end
+      it ' 電話番号は、12桁以上では登録できないこと。' do
+        @order_address.telephone_number = '090123412345'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Telephone number は10桁以上11桁以内の半角数値のみ入力してください。')
+      end
+      it ' 電話番号は、半角数字以外が含まれている場合、登録できないこと。' do
         @order_address.telephone_number = '090ー1234ー1234'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Telephone number は10桁以上11桁以内の半角数値のみ入力してください。')
+      end
+      it ' tokenが必須であること。' do
+        @order_address.token = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it ' userが必須であること。' do
+        @order_address.user_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+      it ' itemが必須であること。' do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end

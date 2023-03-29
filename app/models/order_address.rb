@@ -9,20 +9,21 @@ class OrderAddress
     #                     presence: { message: "can't be blank" }
     # end)
     validates :token
-    validates :delivery_address, presence: true
+    validates :delivery_address
     validates :delivery_city
     validates :user_id
+    validates :item_id
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :telephone_number, format: { with: /\A[0-9]+\z/, message: 'は10桁以上11桁以内の半角数値のみ入力してください。' }
+    validates :telephone_number, format: { with: /\A\d{10,11}\z/, message: 'は10桁以上11桁以内の半角数値のみ入力してください。' }
   end
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
 
   def save
     # 寄付情報を保存し、変数donationに代入する
-    order = Order.create!(user_id: user_id, item_id: item_id)
+    order = Order.create(user_id: user_id, item_id: item_id)
     # 住所を保存する
     # donation_idには、変数donationのidと指定する
-    Address.create!(post_code: post_code, prefecture_id: prefecture_id, delivery_city: delivery_city,
+    Address.create(post_code: post_code, prefecture_id: prefecture_id, delivery_city: delivery_city,
                     delivery_address: delivery_address, delivery_building: delivery_building, telephone_number: telephone_number, order_id: order.id)
   end
 end
